@@ -50,30 +50,55 @@ p.write_text(re.sub(r' data-page-node-id=\"[^\"]*\"', '', s))"
 
 ---
 
-## 部署（三选一）
+## 当前部署（已上线）
 
-### Cloudflare Pages（推荐，你已经在用 Workers）
+| 项 | 值 |
+|---|---|
+| 网址 | **https://iosonolatte.github.io/** |
+| 仓库 | https://github.com/iosonolatte/iosonolatte.github.io （public） |
+| 托管 | GitHub Pages · source = `main` 分支根目录 · push 后自动重新部署 |
+
+`iosonolatte.github.io` 是 GitHub 的**账号级主页仓库**，一个账号只能有一个。推送后 Pages 自动启用，无需手动配置。
+
+### 日常更新流程
+
+改完 `index.html` 或 `assets/cv-print.html` 之后：
 
 ```bash
 cd "/Users/jing/WorkBuddy/My Portfolio"
-npx wrangler pages deploy . --project-name wangjing-portfolio
+
+# 1. 清理预览注入的内部属性（只要文件在 WorkBuddy 里开过预览就必须做）
+python3 -c "
+import re, pathlib
+p = pathlib.Path('index.html'); s = p.read_text()
+print('removed:', len(re.findall(r' data-page-node-id=\"[^\"]*\"', s)))
+p.write_text(re.sub(r' data-page-node-id=\"[^\"]*\"', '', s))"
+
+# 2. 提交并推送 —— Pages 会自动重新构建
+git add -A
+git commit -m "Update portfolio"
+git push
 ```
 
-### GitHub Pages
+约 1 分钟后刷新 https://iosonolatte.github.io/ 即可看到。构建状态：
 
 ```bash
-cd "/Users/jing/WorkBuddy/My Portfolio"
-git init && git add -A && git commit -m "Add personal portfolio"
-git branch -M main
-git remote add origin git@github.com:iosonolatte/portfolio.git
-git push -u origin main
-# 然后在仓库 Settings → Pages 选择 main 分支根目录
+gh api repos/iosonolatte/iosonolatte.github.io/pages --jq .status   # building / built
+```
+
+---
+
+## 备用部署方式
+
+### Cloudflare Pages
+
+```bash
+npx wrangler pages deploy . --project-name wangjing-portfolio
 ```
 
 ### Vercel
 
 ```bash
-cd "/Users/jing/WorkBuddy/My Portfolio"
 npx vercel --prod
 ```
 
