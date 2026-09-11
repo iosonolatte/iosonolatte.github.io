@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wang Jing — CV</title>
+<style>
+  @page { size: A4; margin: 13mm 14mm 12mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif;
+    color: #111; font-size: 9.4pt; line-height: 1.42;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -.01em; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  a { color: #111; text-decoration: none; }
+  strong, b { font-weight: 600; }
+
+  /* Header */
+  .hdr { border-bottom: 1.6px solid #111; padding-bottom: 9px; }
+  .hdr-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  h1 { font-size: 21pt; letter-spacing: -.035em; line-height: 1.05; }
+  .cn { font-size: 10pt; color: #666; letter-spacing: .26em; font-weight: 400; margin-left: 6px; }
+  .role { margin-top: 5px; font-size: 10.2pt; color: #333; font-weight: 500; }
+  .contact { text-align: right; font-size: 8.6pt; color: #444; line-height: 1.62; white-space: nowrap; }
+  .target { margin-top: 7px; font-size: 8.5pt; color: #555; }
+  .target b { color: #111; }
+
+  /* Sections */
+  section { margin-top: 11px; }
+  h2 {
+    font-size: 8.4pt; text-transform: uppercase; letter-spacing: .13em;
+    color: #111; padding-bottom: 3px; border-bottom: .6px solid #bbb; margin-bottom: 7px;
+  }
+  .row { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
+  .when { font-size: 8.3pt; color: #666; white-space: nowrap; }
+  .org { font-size: 9.2pt; color: #333; margin-top: 1px; }
+  .job { margin-bottom: 8px; break-inside: avoid; }
+  .job:last-child { margin-bottom: 0; }
+  .job h3 { font-size: 9.9pt; }
+  .job ul { margin-top: 3.5px; }
+  li { position: relative; padding-left: 10px; margin-bottom: 2.4px; color: #2a2a2a; }
+  li::before { content: "–"; position: absolute; left: 0; color: #888; }
+
+  /* Skills */
+  .sk { display: grid; grid-template-columns: 92px 1fr; gap: 0 10px; }
+  .sk dt { font-size: 8.4pt; color: #666; text-transform: uppercase; letter-spacing: .05em; padding: 2.2px 0; }
+  .sk dd { margin: 0; padding: 2.2px 0; font-size: 9.1pt; }
+  .sk .row-line { display: contents; }
+
+  /* Projects */
+  .proj { margin-bottom: 6px; break-inside: avoid; }
+  .proj:last-child { margin-bottom: 0; }
+  .proj h3 { font-size: 9.7pt; }
+  .proj .sub { font-size: 8.4pt; color: #666; font-weight: 400; }
+  .proj p { margin-top: 2.5px; color: #2a2a2a; }
+
+  /* Education grid */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 22px; }
+  .edu h3 { font-size: 9.4pt; }
+  .edu .meta { font-size: 8.4pt; color: #666; }
+
+  .bring li { color: #2a2a2a; }
+  .bring li b { color: #111; }
+  .foot { margin-top: 12px; padding-top: 6px; border-top: .6px solid #ccc;
+          font-size: 7.8pt; color: #777; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-top">
+    <div>
+      <h1>WANG JING<span class="cn">汪晶</span></h1>
+      <p class="role">Senior Software Engineer — Frontend, AI-Native &amp; Cloud</p>
+    </div>
+    <div class="contact">
+      Singapore (remote / hybrid OK)<br>
+      iosonolatte@gmail.com<br>
+      github.com/iosonolatte
+    </div>
+  </div>
+  <p class="target">
+    <b>Target:</b> AI/LLM Engineer · Fintech Platform Engineer · Forward Deployed Engineer (FDE) · Technical Architect &nbsp;|&nbsp;
+    <b>Stack:</b> TypeScript · React/Next.js · Flutter · LLM APIs · WireGuard / Cloud
+  </p>
+</header>
+
+<section>
+  <h2>Summary</h2>
+  <p>Software engineer with 14+ years shipping production software across iOS, mobile and web — currently pivoting into AI/LLM and technical architecture. At Capgemini I build and extend client web platforms with React/Next.js/TypeScript on AWS, including backend (Node.js) and CI/CD. Outside client work I ship AI-native products end-to-end: LLM integration, RAG, local model inference, and real deployments. Comfortable embedded in real customer and environment contexts to solve problems on-site — the Forward Deployed Engineer (FDE) profile. Based in Singapore.</p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <dl class="sk">
+    <dt>Frontend</dt><dd>React 19, Next.js 16, TypeScript, Tailwind 4, Zustand, Framer Motion, HTML/CSS, jQuery</dd>
+    <dt>Mobile</dt><dd>Flutter 3.44, Swift 5, Objective-C, React Native, iOS (Xcode / CocoaPods), Android</dd>
+    <dt>AI / LLM</dt><dd>LLM API integration (Volcano Engine), embeddings (doubao-embedding-vision), local Ollama (qwen2.5:3b), KataGo engine bridging, Prompt Engineering (zero/few-shot, CoT, ReAct, structured output, self-critique), RAG / agentic workflows; Python &amp; Go for AI tooling</dd>
+    <dt>Cloud / Infra</dt><dd>AWS, CI/CD (AWS, Jenkins, GitLab), WireGuard, VPS, Cloudflare Workers, Supabase (Postgres + RPC), Firebase, iCloud sync</dd>
+    <dt>Architecture</dt><dd>Systems design, sharded EnginePool, WebSocket bridging (gorilla/websocket), code review, technical feasibility, proofs of concept</dd>
+    <dt>Tools</dt><dd>Xcode, Android Studio, VS Code, Postman, Git, JIRA, Confluence, Bitbucket, Apigee, MobileIron</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="job">
+    <div class="row"><h3>Senior Consultant — Capgemini</h3><span class="when">Singapore · Jan 2022 – Present</span></div>
+    <ul>
+      <li>Build and extend client web applications with React.js, TypeScript, Next.js and Tailwind CSS.</li>
+      <li>Develop backend services with Node.js; integrate CI/CD pipelines on AWS cloud.</li>
+      <li>Work directly with client engineering teams to maintain and extend production systems (client-facing delivery).</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>Mobile Developer — Equinix</h3><span class="when">Feb 2020 – Dec 2021</span></div>
+    <ul>
+      <li>Revamped the Equinix Customer Portal mobile app in Flutter (work-visit orders, trouble tickets, etc.).</li>
+      <li>Maintained a legacy Objective-C codebase; built an MVP for cloud connections to Microsoft ExpressRoute using React.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>iOS Developer — UOB</h3><span class="when">Nov 2018 – Nov 2019</span></div>
+    <ul>
+      <li>Led a small iOS team revamping the UOB Business app (Swift 5) with a new design and CMS integration.</li>
+      <li>Bridged native (Swift) and frontend (React.js) features such as QR-code scanning; code review, unit tests, timeline estimation, technical feasibility, POCs.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>Mobile Software Developer — Brightoil Petroleum</h3><span class="when">Singapore · Apr 2017 – Aug 2018</span></div>
+    <ul>
+      <li>Built EBunkering, an oil-trading e-commerce iOS app, from scratch in Swift as the sole iOS developer (App Store Oct 2017; revamped May 2018).</li>
+      <li>Shipped Marine Online (React Native), a one-stop platform for shipowners and crewing staff.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>Senior iOS Developer — NCS Pte Ltd</h3><span class="when">Mar 2016 – Mar 2017</span></div>
+    <ul>
+      <li>Rewrote a legacy iPad app (Mobile Account Opening) in Swift + JavaScript; merged two codebases into one, improving maintainability, performance and UX.</li>
+      <li>Enhanced the OneChat messenger (Objective-C) — bug fixing, UI and performance.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>Mobile Developer — HCL Technologies</h3><span class="when">Oct 2011 – Oct 2015 (intern Apr–Sep 2011)</span></div>
+    <ul>
+      <li>Delivered cross-platform &amp; iOS apps (Titanium, native), web apps (HTML5/jQuery), and hybrid financial tools (OCBC FNA).</li>
+      <li>Built proofs of concept (Google Glass, OCR, Socket.IO realtime chat) and gathered client requirements, wireframes and customer support — early client-facing delivery.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>AI-Native Projects (Personal)</h2>
+
+  <div class="proj">
+    <div class="row">
+      <h3>go-baduk <span class="sub">— Lizzie-style mobile Go analysis app · KataGo + Flutter + Go bridge</span></h3>
+      <span class="when">Private repo</span>
+    </div>
+    <ul>
+      <li>Designed a sharded EnginePool (connection-hash sharding) to preserve neural-network cache hit rate.</li>
+      <li>gorilla/websocket bridge layer; iOS FFI backend (CocoaPods 1.12.1), Android daemon mode.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row">
+      <h3>tsumego-app <span class="sub">— ~1050 Go life-and-death problems</span></h3>
+      <span class="when">Vite → Flutter</span>
+    </div>
+    <ul>
+      <li>Migrated from Vite + Cloudflare Pages Functions to Flutter; Android-first, KMM iOS port in progress.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row">
+      <h3>kidcheckin <span class="sub">— family habit-tracking PWA with family-code sync</span></h3>
+      <span class="when">Cloudflare · Supabase</span>
+    </div>
+    <ul>
+      <li>Cloudflare Workers edge deployment on top of Supabase (Postgres + RPC) for multi-device shared state.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Education &amp; Certifications</h2>
+  <div class="two">
+    <div class="edu">
+      <h3>BSc, Computer Science — Digital Security Systems</h3>
+      <p class="meta">University of Wollongong (SIM GE), 2019</p>
+    </div>
+    <div class="edu">
+      <h3>Diploma in Information Technology</h3>
+      <p class="meta">Singapore Polytechnic, 2011</p>
+    </div>
+    <div class="edu">
+      <h3>AWS Certified Cloud Practitioner</h3>
+      <p class="meta">Amazon Web Services</p>
+    </div>
+    <div class="edu">
+      <h3>Languages</h3>
+      <p class="meta">English · Mandarin Chinese — professional proficiency in both</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What I Bring to an AI / Fintech / FDE Team</h2>
+  <ul class="bring">
+    <li><b>Ship AI to production, not just prototypes</b> — go-baduk engine bridging (KataGo) and tsumego-app tooling.</li>
+    <li><b>Bridge tech ↔ business in ambiguous real environments</b> — 14 years of client-facing delivery (Capgemini, UOB, HCL).</li>
+    <li><b>Full-stack + infra fluent</b> — from React/Swift to AWS, WireGuard and Supabase.</li>
+  </ul>
+</section>
+
+<div class="foot">
+  <span>Wang Jing · iosonolatte@gmail.com</span>
+  <span>Portfolio: index.html</span>
+</div>
+
+</body>
+</html>

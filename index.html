@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-version="1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wang Jing — Senior Software Engineer, AI-Native &amp; Cloud</title>
+<meta name="description" content="Wang Jing — senior software engineer with 14+ years shipping production software across iOS, mobile and web. Now building AI-native products end-to-end: LLM integration, local inference, and the cloud infrastructure underneath. Based in Singapore.">
+<meta name="author" content="Wang Jing">
+<meta name="theme-color" content="#FCFCFA">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wang Jing — Senior Software Engineer, AI-Native &amp; Cloud">
+<meta property="og:description" content="14+ years shipping production software. Now building AI-native products end-to-end. Based in Singapore.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E0E0C'/%3E%3Ctext x='16' y='22' font-family='ui-monospace,Menlo,monospace' font-size='15' font-weight='600' fill='%23FCFCFA' text-anchor='middle'%3EWJ%3C/text%3E%3C/svg%3E">
+
+<script>
+  // Set theme before first paint to avoid a flash.
+  (function () {
+    // Progressive enhancement: content stays visible unless JS is actually running.
+    document.documentElement.classList.add('js');
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<style>
+/* ─────────────────────────────  Tokens  ───────────────────────────── */
+:root {
+  --bg:        #FCFCFA;
+  --panel:     #FFFFFF;
+  --ink:       #0E0E0C;
+  --ink-2:     #55554E;
+  --ink-3:     #8C8C83;
+  --line:      #E5E5DE;
+  --line-soft: #F1F1EC;
+  --accent:    #1D4ED8;
+  --accent-soft: rgba(29, 78, 216, .08);
+  --dot:       #16A34A;
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue",
+          Arial, "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --w: 760px;
+  --r: 10px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0D0D0C;
+    --panel:     #141413;
+    --ink:       #F2F2ED;
+    --ink-2:     #A3A39A;
+    --ink-3:     #6E6E66;
+    --line:      #242423;
+    --line-soft: #1B1B1A;
+    --accent:    #7FA6FF;
+    --accent-soft: rgba(127, 166, 255, .10);
+    --dot:       #4ADE80;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #0D0D0C;
+  --panel:     #141413;
+  --ink:       #F2F2ED;
+  --ink-2:     #A3A39A;
+  --ink-3:     #6E6E66;
+  --line:      #242423;
+  --line-soft: #1B1B1A;
+  --accent:    #7FA6FF;
+  --accent-soft: rgba(127, 166, 255, .10);
+  --dot:       #4ADE80;
+}
+
+/* ─────────────────────────────  Base  ───────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+::selection { background: var(--accent-soft); }
+
+.wrap { width: 100%; max-width: var(--w); margin: 0 auto; padding: 0 28px; }
+
+.mono {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; padding: 10px 16px;
+  background: var(--ink); color: var(--bg); border-radius: 0 0 var(--r) 0; z-index: 100;
+}
+.skip:focus { left: 0; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+/* ─────────────────────────────  Nav  ───────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease);
+}
+.nav.is-stuck { border-bottom-color: var(--line); }
+
+.nav-inner {
+  display: flex; align-items: center; gap: 28px;
+  height: 60px;
+}
+.brand {
+  font-weight: 600; letter-spacing: -.02em; font-size: 15px;
+  display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap;
+}
+.brand small {
+  font-family: var(--mono); font-size: 11px; font-weight: 400;
+  color: var(--ink-3); letter-spacing: .04em;
+}
+
+.nav-links { display: flex; gap: 2px; margin-left: auto; }
+.nav-links a {
+  font-size: 13.5px; color: var(--ink-2); padding: 6px 11px; border-radius: 7px;
+  transition: color .18s var(--ease), background .18s var(--ease);
+}
+.nav-links a:hover { color: var(--ink); background: var(--line-soft); }
+.nav-links a.active { color: var(--ink); font-weight: 500; }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.nav-links + .nav-actions { margin-left: 0; }
+
+.icon-btn {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--panel);
+  color: var(--ink-2); cursor: pointer; padding: 0;
+  transition: color .18s var(--ease), border-color .18s var(--ease), background .18s var(--ease);
+}
+.icon-btn:hover { color: var(--ink); border-color: var(--ink-3); }
+.icon-btn svg { width: 15px; height: 15px; }
+.icon-btn .moon { display: none; }
+:root[data-theme="dark"] .icon-btn .moon { display: block; }
+:root[data-theme="dark"] .icon-btn .sun { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-btn .moon { display: block; }
+  :root:not([data-theme="light"]) .icon-btn .sun { display: none; }
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13.5px; font-weight: 500; line-height: 1;
+  padding: 10px 15px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+  transition: transform .18s var(--ease), border-color .18s var(--ease),
+              background .18s var(--ease), box-shadow .18s var(--ease);
+}
+.btn svg { width: 14px; height: 14px; flex: none; }
+.btn:hover { border-color: var(--ink-3); transform: translateY(-1px); }
+.btn-primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-primary:hover { background: var(--ink); opacity: .88; border-color: var(--ink);
+                     box-shadow: 0 6px 18px -8px rgba(0,0,0,.45); }
+.btn-sm { padding: 8px 12px; font-size: 13px; }
+
+/* ─────────────────────────────  Hero  ───────────────────────────── */
+.hero { padding: 84px 0 68px; }
+
+.status {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-2);
+  border: 1px solid var(--line); background: var(--panel);
+  padding: 6px 12px 6px 10px; border-radius: 100px;
+}
+.pulse {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--dot); flex: none;
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, .55);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--dot) 60%, transparent);
+  animation: pulse 2.4s var(--ease) infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--dot) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 7px color-mix(in srgb, var(--dot) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--dot) 0%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+
+.hero h1 {
+  margin: 26px 0 0;
+  font-size: clamp(2.4rem, 7vw, 3.9rem);
+  font-weight: 600; letter-spacing: -.035em; line-height: 1.02;
+}
+.hero h1 .cn {
+  display: block; font-size: .3em; font-weight: 400; letter-spacing: .34em;
+  color: var(--ink-3); margin-top: 14px; font-family: var(--sans);
+}
+
+.lede {
+  margin-top: 26px; font-size: 18.5px; line-height: 1.6;
+  color: var(--ink-2); max-width: 62ch;
+}
+.lede strong { color: var(--ink); font-weight: 560; }
+
+.targets {
+  margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.targets .label { margin-right: 4px; }
+.chip {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .05em; text-transform: none;
+  padding: 5px 10px; border-radius: 6px;
+  background: var(--line-soft); color: var(--ink-2); white-space: nowrap;
+}
+
+.cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ─────────────────────────────  Sections  ───────────────────────────── */
+section { padding: 66px 0; border-top: 1px solid var(--line); scroll-margin-top: 60px; }
+
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 34px; }
+.sec-head .num { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); letter-spacing: .08em; }
+.sec-head h2 { font-size: 15px; letter-spacing: .01em; text-transform: uppercase;
+               font-family: var(--mono); font-weight: 500; color: var(--ink-2); }
+
+/* About */
+.about-text { font-size: 17px; color: var(--ink-2); line-height: 1.72; max-width: 64ch; }
+.about-text + .about-text { margin-top: 20px; }
+.about-text strong { color: var(--ink); font-weight: 560; }
+
+.bring { margin-top: 38px; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.bring-item { background: var(--panel); padding: 22px 24px; }
+.bring-item h3 { font-size: 15.5px; letter-spacing: -.005em; }
+.bring-item p { margin-top: 7px; font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
+.bring-item .k { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: .08em; display: block; margin-bottom: 9px; }
+
+/* Experience */
+.job { display: grid; grid-template-columns: 132px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line-soft); }
+.job:first-child { border-top: 0; padding-top: 0; }
+.job-period { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); letter-spacing: .04em; padding-top: 3px; line-height: 1.6; }
+.job-period .now { color: var(--ink-2); }
+.job h3 { font-size: 16.5px; }
+.job .org { margin-top: 3px; font-size: 14px; color: var(--ink-2); }
+.job .org b { color: var(--ink); font-weight: 560; }
+.job ul { margin-top: 12px; display: grid; gap: 7px; }
+.job li { position: relative; padding-left: 17px; font-size: 14.5px; color: var(--ink-2); line-height: 1.62; }
+.job li::before {
+  content: ""; position: absolute; left: 2px; top: .66em;
+  width: 4px; height: 1px; background: var(--ink-3);
+}
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.card {
+  display: flex; flex-direction: column;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 22px 22px 20px;
+  transition: transform .22s var(--ease), border-color .22s var(--ease),
+              box-shadow .22s var(--ease);
+}
+.card:hover { transform: translateY(-2px); border-color: var(--ink-3);
+              box-shadow: 0 12px 28px -18px rgba(0,0,0,.35); }
+.card-top { display: flex; align-items: center; gap: 9px; }
+.card h3 { font-size: 15.5px; font-family: var(--mono); font-weight: 500; letter-spacing: -.01em; }
+.card-wide { grid-column: 1 / -1; }
+.tag {
+  margin-left: auto; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em;
+  color: var(--ink-3); border: 1px solid var(--line);
+  padding: 3px 8px; border-radius: 5px; white-space: nowrap;
+}
+.card p { margin-top: 11px; font-size: 14.5px; color: var(--ink-2); line-height: 1.62; }
+.card ul { margin-top: 13px; display: grid; gap: 6px; }
+.card li { position: relative; padding-left: 15px; font-size: 13.5px; color: var(--ink-2); line-height: 1.58; }
+.card li::before { content: ""; position: absolute; left: 1px; top: .64em; width: 4px; height: 1px; background: var(--ink-3); }
+.stack { margin-top: auto; padding-top: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+.stack span {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .03em;
+  color: var(--ink-3); background: var(--line-soft);
+  padding: 3px 8px; border-radius: 5px;
+}
+
+/* Skills */
+.skills { display: grid; gap: 0; border-top: 1px solid var(--line-soft); }
+.skill-row { display: grid; grid-template-columns: 132px 1fr; gap: 24px; padding: 17px 0; border-bottom: 1px solid var(--line-soft); }
+.skill-row dt { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); letter-spacing: .06em; text-transform: uppercase; padding-top: 3px; }
+.skill-row dd { margin: 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.7; }
+.skill-row dd b { color: var(--ink); font-weight: 500; }
+
+/* Background */
+.bg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.bg-item { border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); padding: 22px; }
+.bg-item h3 { font-size: 14.5px; }
+.bg-item .deg { margin-top: 9px; font-size: 14.5px; color: var(--ink-2); }
+.bg-item .school { margin-top: 4px; font-size: 13.5px; color: var(--ink-3); }
+.bg-item .year { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: .06em; }
+
+/* Contact */
+.contact p.big { font-size: clamp(1.35rem, 3.6vw, 1.85rem); letter-spacing: -.025em; line-height: 1.32; max-width: 30ch; font-weight: 500; }
+.contact .cta { margin-top: 30px; }
+.contact-lines { margin-top: 34px; display: grid; gap: 12px; }
+.contact-line { display: flex; align-items: baseline; gap: 14px; font-size: 14.5px; }
+.contact-line .k { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: .07em; text-transform: uppercase; min-width: 84px; }
+.contact-line a { border-bottom: 1px solid var(--line); transition: border-color .18s var(--ease); }
+.contact-line a:hover { border-color: var(--ink); }
+
+/* Footer */
+.foot { border-top: 1px solid var(--line); padding: 30px 0 44px; }
+.foot-inner { display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; justify-content: space-between; }
+.foot p { font-size: 12.5px; color: var(--ink-3); }
+.foot .note { font-family: var(--mono); font-size: 11px; letter-spacing: .03em; }
+
+/* ─────────────────────────────  Motion  ───────────────────────────── */
+/* Content is visible by default; only hidden once JS confirms it can animate it back in. */
+.js .reveal { opacity: 0; transform: translateY(16px); }
+.js .reveal.in { opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .6s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+  .js .reveal.in { transition: none; }
+}
+
+/* ─────────────────────────────  Responsive  ───────────────────────────── */
+@media (max-width: 720px) {
+  .wrap { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-actions { margin-left: auto; }
+  .hero { padding: 56px 0 48px; }
+  .hero h1 .cn { letter-spacing: .28em; }
+  section { padding: 50px 0; }
+  .job { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+  .job-period { padding-top: 0; }
+  .skill-row { grid-template-columns: 1fr; gap: 6px; }
+  .projects, .bg-grid { grid-template-columns: 1fr; }
+  .card-wide { grid-column: auto; }
+  .foot-inner { flex-direction: column; gap: 10px; }
+}
+
+/* ─────────────────────────────  Print  ───────────────────────────── */
+@media print {
+  :root { --bg: #fff; --panel: #fff; --ink: #000; --ink-2: #333; --ink-3: #666;
+          --line: #ccc; --line-soft: #e5e5e5; }
+  .nav, .cta, .skip, .pulse, .foot .note { display: none !important; }
+  body { font-size: 10.5pt; line-height: 1.45; }
+  .wrap { max-width: none; padding: 0; }
+  section { padding: 14pt 0; break-inside: avoid; }
+  .hero { padding: 0 0 10pt; }
+  .hero h1 { font-size: 24pt; }
+  .hero h1 .cn { font-size: 9pt; margin-top: 4pt; }
+  .lede { font-size: 11pt; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .card, .bg-item, .bring { break-inside: avoid; box-shadow: none; }
+  a { border: 0 !important; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ══════════════════  NAV  ══════════════════ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">Wang Jing <small>汪晶</small></a>
+
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" type="button"
+              aria-label="Toggle colour theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/>
+        </svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.5 14.2A8.6 8.6 0 1 1 9.8 3.5a6.7 6.7 0 0 0 10.7 10.7z"/>
+        </svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="assets/WangJing_CV.pdf" download>
+        CV
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3.5v11M7.5 10l4.5 4.5L16.5 10M4.5 20.5h15"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══════════════════  HERO  ══════════════════ -->
+<div id="top"></div>
+<section class="hero" style="border-top:0">
+  <div class="wrap">
+    <div class="status reveal">
+      <span class="pulse" aria-hidden="true"></span>
+      Singapore · open to remote / hybrid
+    </div>
+
+    <h1 class="reveal">
+      Wang Jing
+      <span class="cn">汪 晶</span>
+    </h1>
+
+    <p class="lede reveal">
+      Senior software engineer with <strong>14+ years shipping production software</strong>
+      across iOS, mobile and web. These days I build AI-native products end-to-end —
+      LLM integration, local model inference, and the cloud infrastructure underneath.
+    </p>
+
+    <div class="targets reveal">
+      <span class="label mono">Looking for</span>
+      <span class="chip">AI / LLM Engineer</span>
+      <span class="chip">Fintech Platform Engineer</span>
+      <span class="chip">Forward Deployed Engineer</span>
+      <span class="chip">Technical Architect</span>
+    </div>
+
+    <div class="cta reveal">
+      <a class="btn btn-primary" href="mailto:iosonolatte@gmail.com">
+        Get in touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4.5 6.5h15v11h-15z"/><path d="M4.5 7l7.5 6 7.5-6"/>
+        </svg>
+      </a>
+      <a class="btn" href="assets/WangJing_CV.pdf" download>
+        Download CV
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3.5v11M7.5 10l4.5 4.5L16.5 10M4.5 20.5h15"/>
+        </svg>
+      </a>
+      <a class="btn" href="https://github.com/iosonolatte" target="_blank" rel="noopener">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M9 7h8v8"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════  01 ABOUT  ══════════════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">01</span><h2>About</h2></div>
+
+    <p class="about-text reveal">
+      I spent the first decade-plus of my career building software that people actually depend on —
+      banking apps at <strong>UOB</strong>, trading tools at <strong>Brightoil</strong>, customer
+      platforms at <strong>Equinix</strong>. That work taught me the part that matters most:
+      shipping, and keeping it running.
+    </p>
+    <p class="about-text reveal">
+      Today, at <strong>Capgemini Singapore</strong>, I build and extend client web platforms with
+      React / Next.js / TypeScript on AWS — frontend, Node.js services and CI/CD included. Outside
+      client work I ship AI-native products on my own: LLM integration, RAG, local model inference
+      with Ollama, and engine bridging (KataGo). I like problems where the answer isn't in the docs
+      yet, and I'm comfortable sitting with a customer in their environment until it works.
+    </p>
+
+    <div class="bring reveal">
+      <div class="bring-item">
+        <span class="k">01</span>
+        <h3>Ship AI to production, not just prototypes</h3>
+        <p>KataGo engine bridging for a mobile analysis app, local LLM inference, RAG pipelines — with real deployments and real constraints, not demo code.</p>
+      </div>
+      <div class="bring-item">
+        <span class="k">02</span>
+        <h3>Bridge tech and business in messy environments</h3>
+        <p>14 years of client-facing delivery across Capgemini, UOB and HCL — requirements, feasibility, POCs, and pushing back when a spec is wrong.</p>
+      </div>
+      <div class="bring-item">
+        <span class="k">03</span>
+        <h3>Full-stack, and fluent in the layer underneath</h3>
+        <p>From React and Swift down to AWS, WireGuard, Cloudflare Workers and Supabase. I can own a feature end to end without handing off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════  02 EXPERIENCE  ══════════════════ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">02</span><h2>Experience</h2></div>
+
+    <article class="job reveal">
+      <div class="job-period">2022 Jan —<br><span class="now">Present</span></div>
+      <div>
+        <h3>Senior Consultant</h3>
+        <p class="org"><b>Capgemini</b> · Singapore</p>
+        <ul>
+          <li>Build and extend client web applications with React.js, TypeScript, Next.js and Tailwind CSS.</li>
+          <li>Develop backend services in Node.js and integrate CI/CD pipelines on AWS cloud.</li>
+          <li>Work directly with client engineering teams to maintain and extend production systems.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="job-period">2020 Feb —<br>2021 Dec</div>
+      <div>
+        <h3>Mobile Developer</h3>
+        <p class="org"><b>Equinix</b> · Singapore</p>
+        <ul>
+          <li>Rebuilt the Equinix Customer Portal mobile app in Flutter — work-visit orders, trouble tickets and related flows.</li>
+          <li>Maintained a legacy Objective-C codebase; built an MVP for cloud connections to Microsoft ExpressRoute using React.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="job-period">2018 Nov —<br>2019 Nov</div>
+      <div>
+        <h3>iOS Developer</h3>
+        <p class="org"><b>UOB</b> · Singapore</p>
+        <ul>
+          <li>Led a small iOS team revamping the UOB Business app in Swift 5, with a new design and CMS integration.</li>
+          <li>Bridged native Swift and React.js features such as QR-code scanning; owned code review, unit tests, estimation, feasibility and POCs.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="job-period">2017 Apr —<br>2018 Aug</div>
+      <div>
+        <h3>Mobile Software Developer</h3>
+        <p class="org"><b>Brightoil Petroleum</b> · Singapore</p>
+        <ul>
+          <li>Built EBunkering — an oil-trading e-commerce iOS app — from scratch in Swift as the sole iOS developer (App Store Oct 2017; revamped May 2018).</li>
+          <li>Shipped Marine Online (React Native), a one-stop platform for shipowners and crewing staff.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="job-period">2016 Mar —<br>2017 Mar</div>
+      <div>
+        <h3>Senior iOS Developer</h3>
+        <p class="org"><b>NCS Pte Ltd</b> · Singapore</p>
+        <ul>
+          <li>Rewrote a legacy iPad app (Mobile Account Opening) in Swift + JavaScript; merged two codebases into one, improving maintainability, performance and UX.</li>
+          <li>Enhanced the OneChat messenger (Objective-C) — bug fixing, UI and performance.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="job-period">2011 Oct —<br>2015 Oct</div>
+      <div>
+        <h3>Mobile Developer</h3>
+        <p class="org"><b>HCL Technologies</b> · Singapore <span style="color:var(--ink-3)">(intern Apr–Sep 2011)</span></p>
+        <ul>
+          <li>Delivered cross-platform and iOS apps (Titanium, native), web apps (HTML5 / jQuery) and hybrid financial tools (OCBC FNA).</li>
+          <li>Built POCs — Google Glass, OCR, Socket.IO realtime chat — and gathered client requirements, wireframes and support. Early client-facing delivery.</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════════  03 PROJECTS  ══════════════════ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">03</span><h2>Selected Projects</h2></div>
+
+    <div class="projects">
+
+      <article class="card card-wide reveal">
+        <div class="card-top">
+          <h3>go-baduk</h3>
+          <span class="tag">KataGo · Flutter · Go</span>
+        </div>
+        <p>A Lizzie-style mobile analysis app for Go — a Flutter client talking to a KataGo engine through a Go bridge layer, on both iOS and Android.</p>
+        <ul>
+          <li>Designed a <b>sharded EnginePool</b> (sharding by connection hash) to preserve neural-network cache hit rate across concurrent sessions.</li>
+          <li>Built the bridge on <b>gorilla/websocket</b>, with an iOS FFI backend (CocoaPods 1.12.1) and an Android daemon mode.</li>
+        </ul>
+        <div class="stack"><span>Flutter</span><span>Go</span><span>KataGo</span><span>WebSocket</span><span>iOS FFI</span><span>Android</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top">
+          <h3>tsumego-app</h3>
+          <span class="tag">~1050 problems</span>
+        </div>
+        <p>A Go life-and-death problem trainer holding roughly 1,050 problems, migrated from a Vite / Cloudflare Pages build to Flutter — Android-first, with a KMM iOS port in progress.</p>
+        <div class="stack"><span>Flutter</span><span>Vite</span><span>Cloudflare</span><span>KMM</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top">
+          <h3>kidcheckin</h3>
+          <span class="tag">PWA</span>
+        </div>
+        <p>A family habit-tracking PWA built for real daily use, with a family-code sync model so several devices share one board.</p>
+        <div class="stack"><span>Cloudflare Workers</span><span>Supabase</span><span>Postgres + RPC</span><span>PWA</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════  04 SKILLS  ══════════════════ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">04</span><h2>Skills</h2></div>
+
+    <dl class="skills reveal">
+      <div class="skill-row">
+        <dt>Frontend / Web</dt>
+        <dd><b>React 19</b>, <b>Next.js 16</b>, <b>TypeScript</b>, Tailwind 4, Zustand, Framer Motion, HTML/CSS, jQuery</dd>
+      </div>
+      <div class="skill-row">
+        <dt>Mobile</dt>
+        <dd><b>Flutter 3.44</b>, <b>Swift 5</b>, Objective-C, React Native, iOS (Xcode / CocoaPods), Android</dd>
+      </div>
+      <div class="skill-row">
+        <dt>AI / LLM</dt>
+        <dd>LLM API integration (Volcano Engine), embeddings (doubao-embedding-vision), local inference with Ollama, <b>KataGo engine bridging</b>, prompt engineering (zero/few-shot, CoT, ReAct, structured output, self-critique), RAG / agentic workflows, Python &amp; Go for AI tooling</dd>
+      </div>
+      <div class="skill-row">
+        <dt>Cloud / Infra</dt>
+        <dd>AWS, CI/CD (AWS, Jenkins, GitLab), WireGuard, VPS, Cloudflare Workers, Supabase (Postgres + RPC), Firebase, iCloud sync</dd>
+      </div>
+      <div class="skill-row">
+        <dt>Architecture</dt>
+        <dd>Systems design, sharded EnginePool, WebSocket bridging (gorilla/websocket), code review, technical feasibility, proofs of concept</dd>
+      </div>
+      <div class="skill-row">
+        <dt>Tools</dt>
+        <dd>Xcode, Android Studio, VS Code, Postman, Git, JIRA, Confluence, Bitbucket, Apigee, MobileIron</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ══════════════════  05 BACKGROUND  ══════════════════ -->
+<section id="background">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">05</span><h2>Background</h2></div>
+
+    <div class="bg-grid">
+      <div class="bg-item reveal">
+        <h3>Education</h3>
+        <p class="deg">BSc, Computer Science — Digital Security Systems</p>
+        <p class="school">University of Wollongong (SIM GE)</p>
+        <p class="year">2019</p>
+      </div>
+      <div class="bg-item reveal">
+        <h3>Education</h3>
+        <p class="deg">Diploma in Information Technology</p>
+        <p class="school">Singapore Polytechnic</p>
+        <p class="year">2011</p>
+      </div>
+      <div class="bg-item reveal">
+        <h3>Certification</h3>
+        <p class="deg">AWS Certified Cloud Practitioner</p>
+        <p class="school">Amazon Web Services</p>
+        <p class="year">Active</p>
+      </div>
+      <div class="bg-item reveal">
+        <h3>Languages</h3>
+        <p class="deg">English · Mandarin Chinese</p>
+        <p class="school">Professional working proficiency in both</p>
+        <p class="year">SG / CN</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════  06 CONTACT  ══════════════════ -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">06</span><h2>Contact</h2></div>
+
+    <p class="big reveal">
+      Looking for someone who can take an AI feature from idea to production — and keep it running?
+    </p>
+
+    <div class="cta reveal">
+      <a class="btn btn-primary" href="mailto:iosonolatte@gmail.com">
+        iosonolatte@gmail.com
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4.5 6.5h15v11h-15z"/><path d="M4.5 7l7.5 6 7.5-6"/>
+        </svg>
+      </a>
+      <a class="btn" href="assets/WangJing_CV.pdf" download>
+        Download CV
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3.5v11M7.5 10l4.5 4.5L16.5 10M4.5 20.5h15"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="contact-lines reveal">
+      <div class="contact-line"><span class="k">Email</span><a href="mailto:iosonolatte@gmail.com">iosonolatte@gmail.com</a></div>
+      <div class="contact-line"><span class="k">GitHub</span><a href="https://github.com/iosonolatte" target="_blank" rel="noopener">github.com/iosonolatte</a></div>
+      <div class="contact-line"><span class="k">Location</span><span>Singapore · GMT+8 · remote / hybrid</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════  FOOTER  ══════════════════ -->
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <p>© <span id="year">2026</span> Wang Jing · 汪晶</p>
+    <p class="note">HTML &amp; CSS — no framework, no build step.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Theme toggle ─────────────────────────────────────────── */
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+
+  function currentIsDark() {
+    var set = root.getAttribute('data-theme');
+    if (set) return set === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  toggle.addEventListener('click', function () {
+    var next = currentIsDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  /* ── Sticky nav border ────────────────────────────────────── */
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    if (window.scrollY > 8) nav.classList.add('is-stuck');
+    else nav.classList.remove('is-stuck');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Reveal on scroll ─────────────────────────────────────── */
+  var items = document.querySelectorAll('.reveal');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry, i) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        // Small stagger for items entering together.
+        setTimeout(function () { el.classList.add('in'); }, i * 55);
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ── Active nav link ──────────────────────────────────────── */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var sections = links
+    .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+    .filter(Boolean);
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = '#' + entry.target.id;
+        links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
+  }
+
+  /* ── Year ─────────────────────────────────────────────────── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

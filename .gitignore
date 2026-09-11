@@ -1,0 +1,9 @@
+# WorkBuddy project data (local work logs, memory) — never publish
+.workbuddy/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
