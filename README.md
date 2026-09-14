@@ -3,7 +3,7 @@
 求职用个人主页。单文件静态站，零依赖、零构建步骤 —— 双击 `index.html` 即可打开，也可以直接丢到任意静态托管上。
 
 **定位**：求职作品集（AI/LLM · Fintech · FDE · 技术架构方向）
-**语言**：英文 `index.html` + 中文 `index.zh.html`（两版内容保持一致，互加语言切换链接）
+**语言**：英文 `index.html` + 中文 `zh.html`（两版内容保持一致，互加语言切换链接）
 **风格**：工程极简 —— 黑白灰、等宽字标签、细分割线、大留白
 
 ---
@@ -13,7 +13,7 @@
 ```
 My Portfolio/
 ├── index.html              ← 英文主页（HTML + CSS + JS 内联）
-├── index.zh.html           ← 中文主页（镜像英文版，nav 含「EN」回链）
+├── zh.html           ← 中文主页（镜像英文版，nav 含「EN」回链）
 ├── assets/
 │   ├── WangJing_CV.pdf     ← 英文主页「CV」按钮下载的文件
 │   ├── cv-print.html       ← 英文 CV 的打印源文件（A4 排版，用于重新生成 PDF）
@@ -22,7 +22,7 @@ My Portfolio/
 └── README.md
 ```
 
-> **中英文同步原则**：改内容时 `index.html` 与 `index.zh.html` 必须同步改，否则两版会打架；同理 `cv-print.html` 与 `cv-print.zh.html`。英文页加「中文」链接、中文页加「EN」链接已实现，无需重复维护。
+> **中英文同步原则**：改内容时 `index.html` 与 `zh.html` 必须同步改，否则两版会打架；同理 `cv-print.html` 与 `cv-print.zh.html`。英文页加「中文」链接、中文页加「EN」链接已实现，无需重复维护。
 
 ---
 
@@ -40,13 +40,13 @@ python3 -m http.server 8899
 
 ## 部署前：清理注入属性
 
-如果 `index.html` / `index.zh.html` 曾在编辑器 / 预览面板里打开过，文件会被注入 `data-page-node-id="..."` 这类内部属性（一次可达数百个）。部署前跑一遍清理：
+如果 `index.html` / `zh.html` 曾在编辑器 / 预览面板里打开过，文件会被注入 `data-page-node-id="..."` 这类内部属性（一次可达数百个）。部署前跑一遍清理：
 
 ```bash
 cd "/Users/jing/WorkBuddy/My Portfolio"
 python3 -c "
 import re, pathlib
-for f in ['index.html', 'index.zh.html']:
+for f in ['index.html', 'zh.html']:
     p = pathlib.Path(f); s = p.read_text()
     n = len(re.findall(r' data-page-node-id=\"[^\"]*\"', s))
     p.write_text(re.sub(r' data-page-node-id=\"[^\"]*\"', '', s))
@@ -69,7 +69,7 @@ for f in ['index.html', 'index.zh.html']:
 
 ### 日常更新流程
 
-改完 `index.html` / `index.zh.html` 或 `assets/cv-print.html`（及中文版 `cv-print.zh.html`）之后：
+改完 `index.html` / `zh.html` 或 `assets/cv-print.html`（及中文版 `cv-print.zh.html`）之后：
 
 ```bash
 cd "/Users/jing/WorkBuddy/My Portfolio"
@@ -77,7 +77,7 @@ cd "/Users/jing/WorkBuddy/My Portfolio"
 # 1. 清理预览注入的内部属性（只要文件在 WorkBuddy 里开过预览就必须做）
 python3 -c "
 import re, pathlib
-for f in ['index.html', 'index.zh.html']:
+for f in ['index.html', 'zh.html']:
     p = pathlib.Path(f); s = p.read_text()
     n = len(re.findall(r' data-page-node-id=\"[^\"]*\"', s))
     p.write_text(re.sub(r' data-page-node-id=\"[^\"]*\"', '', s))
