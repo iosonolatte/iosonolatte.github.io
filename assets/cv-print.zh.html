@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Wang Jing — 简历</title>
+<style>
+  @page { size: A4; margin: 13mm 14mm 12mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial,
+                 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #111; font-size: 9.4pt; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -.01em; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  a { color: #111; text-decoration: none; }
+  strong, b { font-weight: 600; }
+
+  /* Header */
+  .hdr { border-bottom: 1.6px solid #111; padding-bottom: 9px; }
+  .hdr-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  h1 { font-size: 21pt; letter-spacing: -.035em; line-height: 1.05; }
+  .cn { font-size: 10pt; color: #666; letter-spacing: .26em; font-weight: 400; margin-left: 6px; }
+  .role { margin-top: 5px; font-size: 10.2pt; color: #333; font-weight: 500; }
+  .contact { text-align: right; font-size: 8.6pt; color: #444; line-height: 1.62; white-space: nowrap; }
+  .target { margin-top: 7px; font-size: 8.5pt; color: #555; }
+  .target b { color: #111; }
+
+  /* Sections */
+  section { margin-top: 11px; }
+  h2 {
+    font-size: 8.4pt; letter-spacing: .13em;
+    color: #111; padding-bottom: 3px; border-bottom: .6px solid #bbb; margin-bottom: 7px;
+  }
+  .row { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
+  .when { font-size: 8.3pt; color: #666; white-space: nowrap; }
+  .org { font-size: 9.2pt; color: #333; margin-top: 1px; }
+  .job { margin-bottom: 8px; break-inside: avoid; }
+  .job:last-child { margin-bottom: 0; }
+  .job h3 { font-size: 9.9pt; }
+  .job ul { margin-top: 3.5px; }
+  li { position: relative; padding-left: 10px; margin-bottom: 2.4px; color: #2a2a2a; }
+  li::before { content: "–"; position: absolute; left: 0; color: #888; }
+
+  /* Skills */
+  .sk { display: grid; grid-template-columns: 92px 1fr; gap: 0 10px; }
+  .sk dt { font-size: 8.4pt; color: #666; letter-spacing: .05em; padding: 2.2px 0; }
+  .sk dd { margin: 0; padding: 2.2px 0; font-size: 9.1pt; }
+
+  /* Projects */
+  .proj { margin-bottom: 6px; break-inside: avoid; }
+  .proj:last-child { margin-bottom: 0; }
+  .proj h3 { font-size: 9.7pt; }
+  .proj .sub { font-size: 8.4pt; color: #666; font-weight: 400; }
+  .proj p { margin-top: 2.5px; color: #2a2a2a; }
+
+  /* Education grid */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 22px; }
+  .edu h3 { font-size: 9.4pt; }
+  .edu .meta { font-size: 8.4pt; color: #666; }
+
+  .bring li { color: #2a2a2a; }
+  .bring li b { color: #111; }
+  .foot { margin-top: 12px; padding-top: 6px; border-top: .6px solid #ccc;
+          font-size: 7.8pt; color: #777; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-top">
+    <div>
+      <h1>WANG JING<span class="cn">汪晶</span></h1>
+      <p class="role">资深软件工程师——前端 · AI 原生 · 云</p>
+    </div>
+    <div class="contact">
+      新加坡（可接受远程 / 混合）<br>
+      iosonolatte@gmail.com<br>
+      github.com/iosonolatte
+    </div>
+  </div>
+  <p class="target">
+    <b>求职方向：</b> AI/LLM 工程师 · 金融科技平台工程师 · 现场部署工程师（FDE）· 技术架构师 &nbsp;|&nbsp;
+    <b>技术栈：</b> TypeScript · React/Next.js · Flutter · LLM API · 云
+  </p>
+</header>
+
+<section>
+  <h2>个人简介</h2>
+  <p>拥有 14 年以上生产级软件交付经验的软件工程师，覆盖 iOS、移动端与 Web——目前正在向 AI/LLM 与技术架构转型。在 Capgemini，我用 React/Next.js/TypeScript 在 AWS 上构建并扩展客户 Web 平台，包含后端（Node.js）与 CI/CD。在客户工作之外，我端到端地交付 AI 原生产品：LLM 集成、RAG、本地模型推理，以及真实部署。乐于扎根于真实的客户与环境现场解决问题——这正是现场部署工程师（FDE）的画像。常驻新加坡。</p>
+</section>
+
+<section>
+  <h2>技术能力</h2>
+  <dl class="sk">
+    <dt>前端</dt><dd>React、Next.js、TypeScript、Tailwind、Vite、HTML/CSS</dd>
+    <dt>移动端</dt><dd>Flutter、Swift、Objective-C、iOS（Xcode / CocoaPods）、Android</dd>
+    <dt>AI / LLM</dt><dd>LLM API 集成（火山引擎）、本地 Ollama（qwen2.5:3b）、KataGo 引擎桥接、提示工程、RAG / agentic 工作流；Python &amp; Go 用于 AI 工具</dd>
+    <dt>云 / 基础设施</dt><dd>AWS、CI/CD（AWS、Jenkins、GitLab）、VPS、Cloudflare Workers、Supabase（Postgres + RPC）、Firebase、iCloud 同步</dd>
+    <dt>架构</dt><dd>系统设计、WebSocket 桥接（gorilla/websocket）、代码评审、技术可行性、概念验证（POC）</dd>
+    <dt>工具</dt><dd>Xcode、Android Studio、VS Code、Postman、Git、JIRA、Confluence、Bitbucket、Apigee、MobileIron</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>职业经历</h2>
+
+  <div class="job">
+    <div class="row"><h3>高级顾问 — Capgemini</h3><span class="when">新加坡 · 2022 年 1 月 – 至今</span></div>
+    <ul>
+      <li>用 React.js、TypeScript、Next.js 与 Tailwind CSS 构建并扩展客户 Web 应用。</li>
+      <li>用 Node.js 开发后端服务；在 AWS 云上集成 CI/CD 流水线。</li>
+      <li>直接与客户工程团队配合，维护并扩展生产系统（面向客户的交付）。</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>移动端开发工程师 — Equinix</h3><span class="when">2020 年 2 月 – 2021 年 12 月</span></div>
+    <ul>
+      <li>用 Flutter 重塑 Equinix 客户门户移动端 App（工单派工、故障工单等）。</li>
+      <li>维护旧版 Objective-C 代码库；用 React 为 Microsoft ExpressRoute 云连接搭建 MVP。</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>iOS 开发工程师 — UOB</h3><span class="when">2018 年 11 月 – 2019 年 11 月</span></div>
+    <ul>
+      <li>带领小团队用 Swift 重做 UOB Business App（引入新设计与 CMS 集成）。</li>
+      <li>打通原生（Swift）与前端（React.js）功能（如二维码扫描）；负责代码评审、单元测试、工作量评估、技术可行性与 POC。</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>移动端软件开发工程师 — Brightoil Petroleum</h3><span class="when">新加坡 · 2017 年 4 月 – 2018 年 8 月</span></div>
+    <ul>
+      <li>作为唯一的 iOS 开发者，用 Swift 从零搭建 EBunkering——一款石油交易电商 iOS App（2017 年 10 月上架；2018 年 5 月改版）。</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>高级 iOS 开发工程师 — NCS Pte Ltd</h3><span class="when">2016 年 3 月 – 2017 年 3 月</span></div>
+    <ul>
+      <li>用 Swift + JavaScript 重写旧版 iPad App（Mobile Account Opening）；将两套代码合并为一，提升了可维护性、性能与体验。</li>
+      <li>增强 OneChat 即时通讯工具（Objective-C）——修复缺陷、优化 UI 与性能。</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><h3>移动端开发工程师 — HCL Technologies</h3><span class="when">2011 年 10 月 – 2015 年 10 月（2011 年 4–9 月实习）</span></div>
+    <ul>
+      <li>交付跨平台与 iOS App（Titanium、原生）、Web 应用（HTML5 / jQuery）及混合金融工具（OCBC FNA）。</li>
+      <li>搭建概念验证（Google Glass、OCR、Socket.IO 实时聊天），并收集客户需求、线框图与提供技术支持——早期面向客户的交付。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>AI 原生项目（个人）</h2>
+
+  <div class="proj">
+    <div class="row">
+      <h3>go-baduk <span class="sub">— Lizzie 风格的移动端围棋分析 App · KataGo + Flutter + Go 桥接</span></h3>
+      <span class="when">私有仓库</span>
+    </div>
+    <ul>
+      <li>设计分片式 EnginePool（按连接哈希分片），保持神经网络缓存命中率。</li>
+      <li>gorilla/websocket 桥接层；iOS FFI 后端（CocoaPods）、Android 守护进程模式。</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row">
+      <h3>tsumego-app <span class="sub">— 约 1050 道围棋死活题</span></h3>
+      <span class="when">Vite → Flutter</span>
+    </div>
+    <ul>
+      <li>从 Vite + Cloudflare Pages Functions 迁移到 Flutter；Android 优先，KMM iOS 移植进行中。</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row">
+      <h3>kidcheckin <span class="sub">— 带家庭码同步的亲子习惯打卡 PWA</span></h3>
+      <span class="when">Cloudflare · Supabase</span>
+    </div>
+    <ul>
+      <li>在 Supabase（Postgres + RPC）之上用 Cloudflare Workers 做边缘部署，实现多设备共享状态。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>教育背景与认证</h2>
+  <div class="two">
+    <div class="edu">
+      <h3>计算机科学学士——数字安全系统</h3>
+      <p class="meta">University of Wollongong（SIM GE），2019</p>
+    </div>
+    <div class="edu">
+      <h3>信息技术文凭</h3>
+      <p class="meta">Singapore Polytechnic，2011</p>
+    </div>
+    <div class="edu">
+      <h3>AWS 认证云从业者</h3>
+      <p class="meta">Amazon Web Services</p>
+    </div>
+    <div class="edu">
+      <h3>语言</h3>
+      <p class="meta">英语 · 中文（普通话）——两者均具备专业能力</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>我能给 AI / 金融科技 / FDE 团队带来什么</h2>
+  <ul class="bring">
+    <li><b>把 AI 交付到生产，而不只是原型</b>——go-baduk 的引擎桥接（KataGo）与 tsumego-app 工具链。</li>
+    <li><b>在模糊的真实环境里架起技术 ↔ 业务的桥梁</b>——14 年面向客户的交付（Capgemini、UOB、HCL）。</li>
+    <li><b>全栈 + 通晓基础设施</b>——从 React/Swift 到 AWS、CI/CD 与 Supabase。</li>
+  </ul>
+</section>
+
+<div class="foot">
+  <span>Wang Jing · iosonolatte@gmail.com</span>
+  <span>作品集：index.zh.html</span>
+</div>
+
+</body>
+</html>
